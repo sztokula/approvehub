@@ -1,0 +1,148 @@
+@import 'tailwindcss';
+@import '../../vendor/livewire/flux/dist/flux.css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
+@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-zinc-50: #fafafa;
+    --color-zinc-100: #f5f5f5;
+    --color-zinc-200: #e5e5e5;
+    --color-zinc-300: #d4d4d4;
+    --color-zinc-400: #a3a3a3;
+    --color-zinc-500: #737373;
+    --color-zinc-600: #525252;
+    --color-zinc-700: #404040;
+    --color-zinc-800: #262626;
+    --color-zinc-900: #171717;
+    --color-zinc-950: #0a0a0a;
+
+    --color-accent: var(--color-neutral-800);
+    --color-accent-content: var(--color-neutral-800);
+    --color-accent-foreground: var(--color-white);
+}
+
+@layer theme {
+    .dark {
+        --color-accent: var(--color-white);
+        --color-accent-content: var(--color-white);
+        --color-accent-foreground: var(--color-neutral-800);
+    }
+}
+
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+[data-flux-field]:not(ui-radio, ui-checkbox) {
+    @apply grid gap-2;
+}
+
+[data-flux-label] {
+    @apply  !mb-0 !leading-tight;
+}
+
+input:focus[data-flux-control],
+textarea:focus[data-flux-control],
+select:focus[data-flux-control] {
+    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+}
+
+.markdown-preview h1 {
+    @apply mb-3 mt-1 text-2xl font-semibold;
+}
+
+.markdown-preview h2 {
+    @apply mb-3 mt-1 text-xl font-semibold;
+}
+
+.markdown-preview h3 {
+    @apply mb-2 mt-1 text-lg font-semibold;
+}
+
+.markdown-preview p {
+    @apply mb-3 leading-relaxed;
+}
+
+.markdown-preview ul,
+.markdown-preview ol {
+    @apply mb-3 ms-5 list-disc;
+}
+
+.markdown-preview ol {
+    @apply list-decimal;
+}
+
+.markdown-preview blockquote {
+    @apply mb-3 border-s-4 border-zinc-300 ps-3 italic dark:border-zinc-600;
+}
+
+.markdown-preview code {
+    @apply rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-700;
+}
+
+.markdown-preview pre {
+    @apply mb-3 overflow-x-auto rounded bg-zinc-100 p-3 text-xs dark:bg-zinc-900;
+}
+
+.markdown-preview a {
+    @apply underline underline-offset-2;
+}
+
+trix-toolbar {
+    @apply rounded-t-md border border-zinc-300 bg-zinc-100 p-2 dark:border-zinc-700 dark:bg-zinc-950;
+}
+
+trix-toolbar .trix-button-group {
+    @apply rounded-md border border-zinc-300 bg-white dark:border-zinc-700 dark:bg-zinc-900;
+}
+
+trix-toolbar .trix-button {
+    @apply border-zinc-200 bg-white text-zinc-800 hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800;
+}
+
+trix-toolbar .trix-button.trix-active {
+    @apply bg-zinc-200 text-zinc-900 dark:bg-zinc-700 dark:text-white;
+}
+
+trix-toolbar .trix-button:disabled {
+    @apply opacity-50;
+}
+
+trix-toolbar .trix-button--icon::before {
+    opacity: 0.78;
+}
+
+.dark trix-toolbar .trix-button--icon::before {
+    filter: invert(1) brightness(1.9);
+    opacity: 0.92;
+}
+
+.dark trix-toolbar .trix-button--icon.trix-active::before {
+    opacity: 1;
+}
+
+trix-editor {
+    @apply rounded-b-md border-x border-b border-zinc-300 bg-white text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100;
+}
+
+trix-editor::before {
+    @apply text-zinc-500 dark:text-zinc-400;
+}
+
+trix-editor:focus {
+    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+}
